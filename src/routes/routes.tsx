@@ -2,12 +2,13 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { HomeScreen } from '../pages/homeScreen'
-import { QuestionScreen } from '../pages/questionScreen'
-import { WelcomeScreenOne } from '../pages/welcomeScreenOne'
 import colors from '../styles/colors'
-import { WelcomeScreenTwo } from '../pages/welcomeScreenTwo';
-import { WelcomeScreenTree } from '../pages/welcomeScreenTree';
+
+import { WelcomeScreenOne } from '../pages/welcome/welcomeScreenOne';
+import { WelcomeScreenTwo } from '../pages/welcome/welcomeScreenTwo';
+import { WelcomeScreenThree } from '../pages/welcome/welcomeScreenThree';
+import { HomeScreen } from '../pages/homeScreen';
+import { QuestionScreen } from '../pages/questionScreen';
 
 const { Screen, Navigator } = createStackNavigator();
 
@@ -31,8 +32,8 @@ export const Routes = () => {
           component={WelcomeScreenTwo}
         />
         <Screen
-          name="WelcomeScreenTree"
-          component={WelcomeScreenTree}
+          name="WelcomeScreenThree"
+          component={WelcomeScreenThree}
         />
         <Screen
           name="HomeScreen"

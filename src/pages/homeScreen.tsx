@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { SvgFromUri } from 'react-native-svg'
+import { Icon } from 'react-native-eva-icons'
 
 import { CategorieSelectButton } from '../components/categoryButton'
 
@@ -30,18 +31,36 @@ export const HomeScreen = () => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.header}>
-				<SvgFromUri
-					uri={"https://jneris.com.br/api/src/assets/level10/logo.svg"}
-					width={127}
-					height={70}
-				/>
-				<View style={styles.title}>
-					<Text style={styles.titleLight}>Olá,</Text>
-					<Text style={styles.titleBold}>João</Text>
-				</View>
+				<Text style={styles.hello}>Olá, João</Text>
+				<Text style={styles.title}>Welcome to <Text style={styles.nameApp}>level10</Text></Text>
 				<Text style={styles.desc}>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum
 				</Text>
+			</View>
+			<View style={styles.achievsWrap}>
+				<Text style={styles.achievsTitle}>
+					Your Achievements
+					<Icon
+						name="question-mark-circle-outline"
+						fill={colors.text}
+						style={{ width: 12, height: 12, marginLeft: 2 }}
+					/>
+				</Text>
+				<View style={styles.achievsBox}>
+					<ScrollView
+						horizontal
+						showsHorizontalScrollIndicator={false}
+						style={styles.achivScrollView}
+					>
+						<View style={styles.achievement}>
+							<SvgFromUri
+								uri={`https://jneris.com.br/api/src/assets/level10/categories/Mythology.svg`}
+								width={35}
+								height={35}
+							/>
+						</View>
+					</ScrollView>
+				</View>
 			</View>
 			<View style={styles.scrollViewWrapper}>
 				<ScrollView
@@ -76,32 +95,66 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		width: '100%',
-		alignItems: 'center',
-		paddingTop: 70,
-		paddingHorizontal: 30
+		alignItems: 'flex-start',
+		justifyContent: 'flex-start',
+		paddingTop: 30,
+		paddingHorizontal: 30,
+		marginBottom: 40
+	},
+	hello: {
+		fontFamily: fonts.heading,
+		fontSize: 15,
+		color: colors.text,
+		marginBottom: 5,
 	},
 	title: {
-		marginBottom: 11,
-		marginTop: 27,
-		flexDirection: 'row'
-	},
-	titleLight: {
-		fontFamily: fonts.text,
-		fontSize: 32,
-		color: colors.heading,
-		marginRight: 5
-	},
-	titleBold: {
 		fontFamily: fonts.heading,
-		fontSize: 32,
+		fontSize: 24,
 		color: colors.heading,
+		marginBottom: 5,
+	},
+	nameApp: {
+		color: colors.sky,
 	},
 	desc: {
 		fontFamily: fonts.text,
 		fontSize: 15,
 		color: colors.text,
-		textAlign: 'center',
-		marginBottom: 40
+	},
+	achievsWrap: {
+		width: '100%',
+		position: 'relative',
+		paddingLeft: 30,
+		marginBottom: 35,
+	},
+	achievsTitle: {
+		color: colors.sky,
+		fontFamily: fonts.heading,
+		fontSize: 15,
+		marginBottom: 10,
+	},
+	achievsBox: {
+		width: '100%',
+		backgroundColor: colors.light,
+		paddingLeft: 25,
+		paddingVertical: 15,
+		borderRadius: 5,
+		borderTopRightRadius: 0,
+	},
+	achivScrollView: {
+		width: '100%',
+		flexDirection: 'row',
+	},
+	achievement: {
+		width: 60,
+		height: 60,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 30,
+		borderWidth: 2,
+		borderColor: colors.gold,
+		backgroundColor: colors.light_gold,
+		marginRight: 25
 	},
 	scrollViewWrapper: {
 		flex: 1,

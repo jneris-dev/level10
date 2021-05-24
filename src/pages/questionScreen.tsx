@@ -1,15 +1,19 @@
 import React, { useLayoutEffect, useState, useEffect } from 'react'
-import { View, SafeAreaView, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, SafeAreaView, Text, ActivityIndicator, StyleSheet, } from 'react-native'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 import { useRoute, useNavigation, ParamListBase } from '@react-navigation/native'
 import { decode } from 'html-entities'
 import { SvgFromUri } from 'react-native-svg'
+import { Icon } from 'react-native-eva-icons'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native-gesture-handler'
 
 import { getQuestions } from '../services/getQuestions'
 import { Categories, Dificulty, Response } from '../services/types'
 
 import { AnswerSelectButton } from '../components/answerSelectButton'
 import { AnswerConfirmModal } from '../components/answerConfirmModal'
+
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 
@@ -127,21 +131,81 @@ export const QuestionScreen = () => {
 			case 'easy':
 				return (
 					<Text>
-						★<Text style={styles.badgeOpacityStar}>★★</Text> <Text style={{ color: colors.heading }}>Easy</Text>
+						<Icon
+							name="star"
+							fill={colors.sky}
+							style={styles.badgeStar}
+						/>
+						<Icon
+							name="star"
+							fill={colors.light_sky}
+							style={styles.badgeStar}
+						/>
+						<Icon
+							name="star"
+							fill={colors.light_sky}
+							style={styles.badgeStar}
+						/>
 					</Text>
 				)
 			case 'medium':
 				return (
 					<Text>
-						★★<Text style={styles.badgeOpacityStar}>★</Text> <Text style={{ color: colors.heading }}>Medium</Text>
-					</Text >
+						<Icon
+							name="star"
+							fill={colors.sky}
+							style={styles.badgeStar}
+						/>
+						<Icon
+							name="star"
+							fill={colors.sky}
+							style={styles.badgeStar}
+						/>
+						<Icon
+							name="star"
+							fill={colors.light_sky}
+							style={styles.badgeStar}
+						/>
+					</Text>
 				)
 			case 'hard':
-				return <Text>★★★ <Text style={{ color: colors.heading }}>Hard</Text></Text>
+				return (
+					<Text>
+						<Icon
+							name="star"
+							fill={colors.sky}
+							style={styles.badgeStar}
+						/>
+						<Icon
+							name="star"
+							fill={colors.sky}
+							style={styles.badgeStar}
+						/>
+						<Icon
+							name="star"
+							fill={colors.sky}
+							style={styles.badgeStar}
+						/>
+					</Text>
+				)
 			default:
 				return (
 					<Text>
-						★★<Text style={styles.badgeOpacityStar}>★</Text> Medium
+						<Icon
+							name="star"
+							fill={colors.sky}
+							style={styles.badgeStar}
+						/>
+						<Icon
+							name="star"
+							fill={colors.sky}
+							style={styles.badgeStar}
+						/>
+						<Icon
+							name="star"
+							fill={colors.light_sky}
+							style={styles.badgeStar}
+						/>
 					</Text>
 				)
 		}
@@ -225,46 +289,69 @@ export const QuestionScreen = () => {
 				</View>
 			) : (
 				<SafeAreaView style={styles.safeArea}>
-					<View style={styles.mainContainer}>
-						<View style={styles.header}>
-							<SvgFromUri
-								uri={`https://jneris.com.br/api/src/assets/level10/categories/${categorySelected}.svg`}
-								width={25}
-								height={25}
-							/>
-							<View style={styles.badgeContainer}>
-								<Text style={styles.badgeLabel}>{getLevelBadge()}</Text>
+					<ScrollView
+						showsVerticalScrollIndicator={false}
+						showsHorizontalScrollIndicator={false}
+					>
+						<View style={styles.mainContainer}>
+							<View style={styles.header}>
+								<View style={styles.headerCategory}>
+									<SvgFromUri
+										uri={`https://jneris.com.br/api/src/assets/level10/categories/${categorySelected}.svg`}
+										width={25}
+										height={25}
+									/>
+									<Text style={styles.headerCategoryTitle}>
+										{categorySelected}
+									</Text>
+								</View>
+								<View style={styles.badgeContainer}>
+									{getLevelBadge()}
+								</View>
+							</View>
+							<View style={styles.questionCount}>
+								<Text style={styles.questionCountTitle}>
+									Question {route.params.questionNumber}
+									<Text style={{ fontSize: 15 }}>/10</Text>
+								</Text>
+							</View>
+							<View style={styles.wrapperQuestion}>
+								<Text style={styles.questionTitle}>{decode(question)}</Text>
+								{answers.map((answer) => (
+									<View key={answer}>
+										<AnswerSelectButton
+											onPress={() => handleUserChoise(answer)}
+											disabled={userAnswerChoise !== '' && userAnswerChoise !== answer}
+											selected={answer === userAnswerChoise}
+											label={decode(answer)}
+										/>
+									</View>
+								))}
+							</View>
+							<View style={styles.wrapperQuestionConfirm}>
+								<TouchableOpacity
+									style={[
+										styles.confirmAnswer,
+										userAnswerChoise === '' && styles.confirmAnswerDisabled
+									]}
+									onPress={checkAnswer}
+									activeOpacity={.5}
+									disabled={userAnswerChoise === ''}
+								>
+									<Text style={styles.confirmAnswerLabel}>Confirm Answer</Text>
+								</TouchableOpacity>
 							</View>
 						</View>
-						<View style={styles.questionCount}>
-							<Text style={styles.questionCountTitle}>
-								Question {route.params.questionNumber}
-								<Text style={{ fontSize: 15 }}>/10</Text>
-							</Text>
-						</View>
-						<View style={styles.wrapperQuestion}>
-							<Text style={styles.questionTitle}>{decode(question)}</Text>
-							{answers.map((answer) => (
-								<View key={answer}>
-									<AnswerSelectButton
-										onPress={() => handleUserChoise(answer)}
-										disabled={userAnswerChoise !== '' && userAnswerChoise !== answer}
-										selected={correctAnswer === answer}
-										label={decode(answer)}
-									/>
-								</View>
-							))}
-						</View>
-					</View>
+					</ScrollView>
 				</SafeAreaView>
 			)}
-			<AnswerConfirmModal
+			{/* <AnswerConfirmModal
 				visible={userAnswerChoise !== ''}
 				userAnswerChoise={decode(userAnswerChoise)}
 				onBackDropPress={() => handleUserChoise('')}
 				onCancel={() => handleUserChoise('')}
 				onConfirm={checkAnswer}
-			/>
+			/> */}
 		</>
 	)
 }
@@ -289,20 +376,31 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-between'
 	},
+	headerCategory: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	headerCategoryTitle: {
+		fontFamily: fonts.heading,
+		fontSize: 15,
+		color: colors.heading,
+		marginLeft: 9,
+	},
 	badgeContainer: {
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	badgeLabel: {
-		fontSize: 15,
-		fontFamily: fonts.heading,
+	badgeStar: {
+		width: 15,
+		height: 15,
+		marginLeft: 3,
 		color: colors.sky,
 	},
 	badgeOpacityStar: {
 		color: colors.light_sky,
 	},
 	questionCount: {
-		paddingBottom: 15,
+		paddingBottom: 10,
 		width: '100%',
 		borderBottomColor: colors.light,
 		borderBottomWidth: 1,
@@ -313,7 +411,7 @@ const styles = StyleSheet.create({
 		color: colors.grey
 	},
 	wrapperQuestion: {
-		marginTop: 20,
+		marginTop: 15,
 		width: '100%',
 	},
 	questionTitle: {
@@ -322,4 +420,25 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		marginBottom: 37,
 	},
+	wrapperQuestionConfirm: {
+		marginTop: 15,
+		paddingBottom: 50
+	},
+	confirmAnswer: {
+		width: '100%',
+		height: 55,
+		backgroundColor: colors.sky,
+		borderRadius: 5,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	confirmAnswerLabel: {
+		fontFamily: fonts.heading,
+		fontSize: 15,
+		color: colors.white,
+		textTransform: 'uppercase',
+	},
+	confirmAnswerDisabled: {
+		backgroundColor: colors.light_sky,
+	}
 })
