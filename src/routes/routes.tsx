@@ -9,6 +9,7 @@ import { WelcomeScreenTwo } from '../pages/welcome/welcomeScreenTwo';
 import { WelcomeScreenThree } from '../pages/welcome/welcomeScreenThree';
 import { HomeScreen } from '../pages/homeScreen';
 import { QuestionScreen } from '../pages/questionScreen';
+import { ResultScreen } from '../pages/resultScreen';
 
 const { Screen, Navigator } = createStackNavigator();
 
@@ -46,6 +47,10 @@ export const Routes = () => {
         <Screen
           name="QuestionScreenB"
           component={QuestionScreen}
+        />
+        <Screen
+          name="ResultScreen"
+          component={ResultScreen}
         />
       </Navigator>
     </NavigationContainer>

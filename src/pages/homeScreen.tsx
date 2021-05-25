@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StatusBar, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text, StatusBar, SafeAreaView, StyleSheet, Alert } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -28,6 +28,10 @@ export const HomeScreen = () => {
 		}
 	}
 
+	function aboutAchievs() {
+		Alert.alert('Achievements when reaching 7 or more hits.');
+	}
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.header}>
@@ -38,7 +42,7 @@ export const HomeScreen = () => {
 				</Text>
 			</View>
 			<View style={styles.achievsWrap}>
-				<Text style={styles.achievsTitle}>
+				<Text style={styles.achievsTitle} onPress={aboutAchievs}>
 					Your Achievements
 					<Icon
 						name="question-mark-circle-outline"
@@ -55,6 +59,46 @@ export const HomeScreen = () => {
 						<View style={styles.achievement}>
 							<SvgFromUri
 								uri={`https://jneris.com.br/api/src/assets/level10/categories/Mythology.svg`}
+								width={35}
+								height={35}
+							/>
+						</View>
+						<View style={styles.achievementNotUnlocked}>
+							<Icon
+								name="question-mark-outline"
+								fill={colors.grey}
+								width={35}
+								height={35}
+							/>
+						</View>
+						<View style={styles.achievementNotUnlocked}>
+							<Icon
+								name="question-mark-outline"
+								fill={colors.grey}
+								width={35}
+								height={35}
+							/>
+						</View>
+						<View style={styles.achievementNotUnlocked}>
+							<Icon
+								name="question-mark-outline"
+								fill={colors.grey}
+								width={35}
+								height={35}
+							/>
+						</View>
+						<View style={styles.achievementNotUnlocked}>
+							<Icon
+								name="question-mark-outline"
+								fill={colors.grey}
+								width={35}
+								height={35}
+							/>
+						</View>
+						<View style={styles.achievementNotUnlocked}>
+							<Icon
+								name="question-mark-outline"
+								fill={colors.grey}
 								width={35}
 								height={35}
 							/>
@@ -137,9 +181,10 @@ const styles = StyleSheet.create({
 		width: '100%',
 		backgroundColor: colors.light,
 		paddingLeft: 25,
-		paddingVertical: 15,
+		paddingVertical: 20,
 		borderRadius: 5,
 		borderTopRightRadius: 0,
+		borderBottomRightRadius: 0,
 	},
 	achivScrollView: {
 		width: '100%',
@@ -151,10 +196,22 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 30,
-		borderWidth: 2,
+		borderWidth: 3,
 		borderColor: colors.gold,
 		backgroundColor: colors.light_gold,
 		marginRight: 25
+	},
+	achievementNotUnlocked: {
+		width: 60,
+		height: 60,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 30,
+		borderWidth: 3,
+		borderColor: colors.grey,
+		backgroundColor: 'transparent',
+		marginRight: 25,
+		borderStyle: 'dotted'
 	},
 	scrollViewWrapper: {
 		flex: 1,

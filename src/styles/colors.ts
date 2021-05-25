@@ -1,6 +1,6 @@
 export default {
     sky: '#00D2C9',
-    light: '#F2F2F2',
+    light: '#F3F5F7',
     white: '#FFFFFF',
     grey: '#C4C4C4',
     dark: '#1F2C34',

@@ -12,7 +12,6 @@ import { getQuestions } from '../services/getQuestions'
 import { Categories, Dificulty, Response } from '../services/types'
 
 import { AnswerSelectButton } from '../components/answerSelectButton'
-import { AnswerConfirmModal } from '../components/answerConfirmModal'
 
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
@@ -278,7 +277,10 @@ export const QuestionScreen = () => {
 		const nextScreen =
 			route.name === 'QuestionScreenB' ? 'QuestionScreenA' : 'QuestionScreenB'
 
-		navigation.replace(nextScreen, navigationParams)
+		const navigateScreen =
+			questionNumber === 10 ? 'ResultScreen' : nextScreen
+
+		navigation.replace(navigateScreen, navigationParams)
 	}
 
 	return (
@@ -345,13 +347,6 @@ export const QuestionScreen = () => {
 					</ScrollView>
 				</SafeAreaView>
 			)}
-			{/* <AnswerConfirmModal
-				visible={userAnswerChoise !== ''}
-				userAnswerChoise={decode(userAnswerChoise)}
-				onBackDropPress={() => handleUserChoise('')}
-				onCancel={() => handleUserChoise('')}
-				onConfirm={checkAnswer}
-			/> */}
 		</>
 	)
 }
