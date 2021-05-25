@@ -61,6 +61,7 @@ export const HomeScreen = () => {
 								uri={`https://jneris.com.br/api/src/assets/level10/categories/Mythology.svg`}
 								width={35}
 								height={35}
+								onPress={() => navigation.navigate('ResultScreen')}
 							/>
 						</View>
 						<View style={styles.achievementNotUnlocked}>

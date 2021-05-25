@@ -7,12 +7,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-eva-icons'
 
 import colors from '../../styles/colors';
-
 import styles from './styleWelcome'
 
-
 export function WelcomeScreenTwo() {
-    const navegation = useNavigation();
+    const navigation = useNavigation();
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
@@ -31,7 +29,7 @@ export function WelcomeScreenTwo() {
                 </View>
                 <TouchableOpacity
                     style={styles.next}
-                    onPress={() => navegation.navigate('WelcomeScreenThree')}
+                    onPress={() => navigation.navigate('WelcomeScreenThree')}
                     activeOpacity={.5}
                 >
                     <Icon

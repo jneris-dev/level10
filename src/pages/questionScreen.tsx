@@ -10,11 +10,14 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 import { getQuestions } from '../services/getQuestions'
 import { Categories, Dificulty, Response } from '../services/types'
+import { getObject, removeItem, storeData, storeObject } from '../services/storageService'
+import { KEYS } from '../constants/keys'
 
 import { AnswerSelectButton } from '../components/answerSelectButton'
 
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
+
 
 type RouteParam = {
 	key: string
@@ -29,6 +32,15 @@ type RouteParam = {
 		previousAnswerWasRight?: boolean
 		questionNumber?: number
 	}
+}
+
+type StorageObject = {
+	questionName: string
+	questionNumber: number
+	rightAnswer: boolean
+	wrongAnswer: boolean
+	date: string
+	dificulty: string
 }
 
 const shuffle = (array: string[]) => {
@@ -74,13 +86,8 @@ export const QuestionScreen = () => {
 			category,
 			dificulty,
 			upgradeDificulty,
-			downgradeDificulty,
-			correctAnswers,
-			wrongAnswers
+			downgradeDificulty
 		} = route.params
-
-		console.log('ACERTOU ===', correctAnswers)
-		console.log('ERROU ===', wrongAnswers)
 
 		function setDificulty(receivedDificulty: Dificulty) {
 			navigation.setParams({
@@ -130,81 +137,33 @@ export const QuestionScreen = () => {
 			case 'easy':
 				return (
 					<Text>
-						<Icon
-							name="star"
-							fill={colors.sky}
-							style={styles.badgeStar}
-						/>
-						<Icon
-							name="star"
-							fill={colors.light_sky}
-							style={styles.badgeStar}
-						/>
-						<Icon
-							name="star"
-							fill={colors.light_sky}
-							style={styles.badgeStar}
-						/>
+						<Icon name="star" fill={colors.sky} style={styles.badgeStar} />
+						<Icon name="star" fill={colors.light_sky} style={styles.badgeStar} />
+						<Icon name="star" fill={colors.light_sky} style={styles.badgeStar} />
 					</Text>
 				)
 			case 'medium':
 				return (
 					<Text>
-						<Icon
-							name="star"
-							fill={colors.sky}
-							style={styles.badgeStar}
-						/>
-						<Icon
-							name="star"
-							fill={colors.sky}
-							style={styles.badgeStar}
-						/>
-						<Icon
-							name="star"
-							fill={colors.light_sky}
-							style={styles.badgeStar}
-						/>
+						<Icon name="star" fill={colors.sky} style={styles.badgeStar} />
+						<Icon name="star" fill={colors.sky} style={styles.badgeStar} />
+						<Icon name="star" fill={colors.light_sky} style={styles.badgeStar} />
 					</Text>
 				)
 			case 'hard':
 				return (
 					<Text>
-						<Icon
-							name="star"
-							fill={colors.sky}
-							style={styles.badgeStar}
-						/>
-						<Icon
-							name="star"
-							fill={colors.sky}
-							style={styles.badgeStar}
-						/>
-						<Icon
-							name="star"
-							fill={colors.sky}
-							style={styles.badgeStar}
-						/>
+						<Icon name="star" fill={colors.sky} style={styles.badgeStar} />
+						<Icon name="star" fill={colors.sky} style={styles.badgeStar} />
+						<Icon name="star" fill={colors.sky} style={styles.badgeStar} />
 					</Text>
 				)
 			default:
 				return (
 					<Text>
-						<Icon
-							name="star"
-							fill={colors.sky}
-							style={styles.badgeStar}
-						/>
-						<Icon
-							name="star"
-							fill={colors.sky}
-							style={styles.badgeStar}
-						/>
-						<Icon
-							name="star"
-							fill={colors.light_sky}
-							style={styles.badgeStar}
-						/>
+						<Icon name="star" fill={colors.sky} style={styles.badgeStar} />
+						<Icon name="star" fill={colors.sky} style={styles.badgeStar} />
+						<Icon name="star" fill={colors.light_sky} style={styles.badgeStar} />
 					</Text>
 				)
 		}
@@ -218,7 +177,7 @@ export const QuestionScreen = () => {
 		}
 	}
 
-	const checkAnswer = () => {
+	const checkAnswer = async () => {
 		const {
 			category,
 			dificulty,
@@ -274,13 +233,39 @@ export const QuestionScreen = () => {
 				})
 		}
 
+		const setDataToStorage: StorageObject = {
+			date: new Date().toDateString(),
+			dificulty: dificulty || 'medium',
+			questionName: decode(question),
+			questionNumber: questionNumber || 1,
+			rightAnswer: userAnswerChoise === correctAnswer,
+			wrongAnswer: userAnswerChoise !== correctAnswer
+		}
+
+		let storageData = await getObject(KEYS[category!])
+
+		if (questionNumber === 1 && storageData !== null) {
+			await removeItem(KEYS[category!])
+		}
+
+		if (storageData === null) {
+			storageData = []
+		}
+
+		storageData.push(setDataToStorage)
+
+		await storeObject(KEYS[category!], storageData)
+
+		if (questionNumber === 10) {
+			await storeData(`TOKEN_${KEYS[category!]}`, `CATEGORY ${category} - Concluded in ${new Date().toDateString()}`)
+		}
+
 		const nextScreen =
 			route.name === 'QuestionScreenB' ? 'QuestionScreenA' : 'QuestionScreenB'
 
-		const navigateScreen =
-			questionNumber === 10 ? 'ResultScreen' : nextScreen
+		const navigateTo = questionNumber === 10 ? 'ResultScreen' : nextScreen
 
-		navigation.replace(navigateScreen, navigationParams)
+		navigation.replace(navigateTo, navigationParams)
 	}
 
 	return (

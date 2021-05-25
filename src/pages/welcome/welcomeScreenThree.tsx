@@ -11,7 +11,7 @@ import colors from '../../styles/colors';
 import styles from './styleWelcome'
 
 export function WelcomeScreenThree() {
-    const navegation = useNavigation();
+    const navigation = useNavigation();
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
@@ -30,7 +30,7 @@ export function WelcomeScreenThree() {
                 </View>
                 <TouchableOpacity
                     style={styles.next}
-                    onPress={() => navegation.navigate('HomeScreen')}
+                    onPress={() => navigation.navigate('HomeScreen')}
                     activeOpacity={.5}
                 >
                     <Icon
