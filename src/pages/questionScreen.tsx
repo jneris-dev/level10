@@ -3,7 +3,6 @@ import { View, SafeAreaView, Text, ActivityIndicator, StyleSheet, } from 'react-
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 import { useRoute, useNavigation, ParamListBase } from '@react-navigation/native'
 import { decode } from 'html-entities'
-import { SvgFromUri } from 'react-native-svg'
 import { Icon } from 'react-native-eva-icons'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -283,11 +282,7 @@ export const QuestionScreen = () => {
 						<View style={styles.mainContainer}>
 							<View style={styles.header}>
 								<View style={styles.headerCategory}>
-									<SvgFromUri
-										uri={`https://jneris.com.br/api/src/assets/level10/categories/${categorySelected}.svg`}
-										width={25}
-										height={25}
-									/>
+
 									<Text style={styles.headerCategoryTitle}>
 										{categorySelected}
 									</Text>

@@ -1,7 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { ActivityIndicator, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-eva-icons';
-import { SvgFromUri } from 'react-native-svg';
 import { useRoute, useNavigation, ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack'
 
@@ -114,11 +113,6 @@ export const ResultScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
-                <SvgFromUri
-                    uri={`https://jneris.com.br/api/src/assets/level10/categories/${route.params.category}.svg`}
-                    width={70}
-                    height={70}
-                />
                 <Text style={styles.title}>Parabéns !!</Text>
                 <Text>Check level in <Text>{route.params.category}</Text></Text>
                 <Text>finished in: {date}</Text>
@@ -166,6 +160,18 @@ export const ResultScreen = () => {
 }
 
 const styles = StyleSheet.create({
+    loaderContainer: {
+
+    },
+    exitContainer: {
+
+    },
+    exitButton: {
+
+    },
+    exitButtonLabel: {
+
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -180,6 +186,9 @@ const styles = StyleSheet.create({
 
     },
     starIcon: {
-
-    }
+        width: 15,
+        height: 15,
+        marginLeft: 3,
+        color: colors.sky,
+    },
 })

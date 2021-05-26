@@ -1,17 +1,15 @@
 import React from 'react'
-import { View, Text, StatusBar, SafeAreaView, StyleSheet, Alert } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, Alert, TouchableOpacity, StatusBar } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { SvgFromUri } from 'react-native-svg'
 import { Icon } from 'react-native-eva-icons'
+import { getData } from '../services/storageService'
 
 import { CategorieSelectButton } from '../components/categoryButton'
 
 import { categories } from '../constants/categoriesList'
 import { Categories } from '../services/types'
 
-import { getData } from '../services/storageService'
 import fonts from '../styles/fonts'
 import colors from '../styles/colors'
 
@@ -41,7 +39,7 @@ export const HomeScreen = () => {
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum
 				</Text>
 			</View>
-			<View style={styles.achievsWrap}>
+			{/* <View style={styles.achievsWrap}>
 				<Text style={styles.achievsTitle} onPress={aboutAchievs}>
 					Your Achievements
 					<Icon
@@ -57,12 +55,9 @@ export const HomeScreen = () => {
 						style={styles.achivScrollView}
 					>
 						<View style={styles.achievement}>
-							<SvgFromUri
-								uri={`https://jneris.com.br/api/src/assets/level10/categories/Mythology.svg`}
-								width={35}
-								height={35}
-								onPress={() => navigation.navigate('ResultScreen')}
-							/>
+							<TouchableOpacity onPress={() => navigation.navigate('ResultScreen')}>
+								
+							</TouchableOpacity>
 						</View>
 						<View style={styles.achievementNotUnlocked}>
 							<Icon
@@ -106,7 +101,7 @@ export const HomeScreen = () => {
 						</View>
 					</ScrollView>
 				</View>
-			</View>
+			</View> */}
 			<View style={styles.scrollViewWrapper}>
 				<ScrollView
 					showsVerticalScrollIndicator={false}
