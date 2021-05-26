@@ -282,7 +282,6 @@ export const QuestionScreen = () => {
 						<View style={styles.mainContainer}>
 							<View style={styles.header}>
 								<View style={styles.headerCategory}>
-
 									<Text style={styles.headerCategoryTitle}>
 										{categorySelected}
 									</Text>
@@ -359,7 +358,6 @@ const styles = StyleSheet.create({
 		fontFamily: fonts.heading,
 		fontSize: 15,
 		color: colors.heading,
-		marginLeft: 9,
 	},
 	badgeContainer: {
 		alignItems: 'center',

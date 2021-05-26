@@ -27,7 +27,7 @@ export function WelcomeScreenThree() {
                 </View>
                 <TouchableOpacity
                     style={styles.next}
-                    onPress={() => navigation.navigate('HomeScreen')}
+                    onPress={() => navigation.navigate('UserIdentification')}
                     activeOpacity={.5}
                 >
                     <Icon
