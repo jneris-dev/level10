@@ -176,7 +176,7 @@ export const ResultScreen = () => {
                             </View>
                             <View style={styles.lvBox}>
                                 <Text>
-                                    <Text style={styles.lvStars}>★
+                                    <Text style={styles.lvStars}>★★
                                 <Text style={styles.lvStarsDisable}>★</Text>
                                     </Text>
                                     <Text style={styles.lvSubTitle}> medium</Text>
@@ -210,7 +210,8 @@ const styles = StyleSheet.create({
     loaderContainer: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingHorizontal: 30,
     },
     loaderText: {
         fontFamily: fonts.heading,

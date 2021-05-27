@@ -32,7 +32,7 @@ export const StarterScreen = () => {
         if (userName) {
             navigation.navigate('HomeScreen')
         } else {
-            navigation.navigate('WelcomeScreenOne')
+            navigation.navigate('WelcomeScreen')
         }
     }
 
@@ -57,7 +57,7 @@ export const StarterScreen = () => {
                     >
                         <Text style={styles.buttonStartLabel}>
                             Let's go
-                            </Text>
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>

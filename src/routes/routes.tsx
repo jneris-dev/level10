@@ -5,19 +5,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import colors from '../styles/colors'
 
 import { StarterScreen } from '../pages/starterScreen';
-import { WelcomeScreenOne } from '../pages/welcome/welcomeScreenOne';
-import { WelcomeScreenTwo } from '../pages/welcome/welcomeScreenTwo';
-import { WelcomeScreenThree } from '../pages/welcome/welcomeScreenThree';
+import { WelcomeScreen } from '../pages/welcomeScreen';
 import { UserIdentification } from '../pages/userIdentification';
 import { HomeScreen } from '../pages/homeScreen';
 import { QuestionScreen } from '../pages/questionScreen';
 import { ResultScreen } from '../pages/resultScreen';
-import { FeedbackScreen } from '../pages/feedbackScreen';
 
 const { Screen, Navigator } = createStackNavigator();
 
 export const Routes = () => {
-
 	return (
 		<NavigationContainer>
 			<Navigator
@@ -33,16 +29,8 @@ export const Routes = () => {
 					component={StarterScreen}
 				/>
 				<Screen
-					name="WelcomeScreenOne"
-					component={WelcomeScreenOne}
-				/>
-				<Screen
-					name="WelcomeScreenTwo"
-					component={WelcomeScreenTwo}
-				/>
-				<Screen
-					name="WelcomeScreenThree"
-					component={WelcomeScreenThree}
+					name="WelcomeScreen"
+					component={WelcomeScreen}
 				/>
 				<Screen
 					name="UserIdentification"
@@ -63,10 +51,6 @@ export const Routes = () => {
 				<Screen
 					name="ResultScreen"
 					component={ResultScreen}
-				/>
-				<Screen
-					name="FeedbackScreen"
-					component={FeedbackScreen}
 				/>
 			</Navigator>
 		</NavigationContainer>

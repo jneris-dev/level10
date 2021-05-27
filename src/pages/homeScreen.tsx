@@ -3,10 +3,9 @@ import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { getData } from '../services/storageService'
-import { Icon } from 'react-native-eva-icons'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { CategorieSelectButton } from '../components/categoryButton'
+import { KEYS } from '../constants/keys'
 
 import { categories } from '../constants/categoriesList'
 import { Categories } from '../services/types'
@@ -20,7 +19,7 @@ export const HomeScreen = () => {
 
 	useEffect(() => {
 		async function loadStorageUserName() {
-			const user = await AsyncStorage.getItem('@level10:user');
+			const user = await getData('@level10:user');
 			setUserName(user || '');
 		}
 
@@ -28,13 +27,15 @@ export const HomeScreen = () => {
 	}, []);
 
 	const handleNavigation = async (categoryName: Categories) => {
-		const result = await getData(categoryName)
+		const result = await getData(`TOKEN_${KEYS[categoryName]}`)
 		if (result === null) {
-			navigation.navigate('QuestionScreenA', {
+			return navigation.navigate('QuestionScreenA', {
 				category: categoryName,
 				questionNumber: 1
 			})
 		}
+
+		return navigation.navigate('ResultScreen', { category: categoryName })
 	}
 
 	return (
