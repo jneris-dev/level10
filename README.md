@@ -1,5 +1,5 @@
 <p align="center"> 
-<img src="https://github.com/jneris-wd/level10/blob/main/assets/logo.svg">
+<img src="https://github.com/jneris-wd/level10/blob/main/assets/logo.svg" width="150">
 </p>
 
 <p align="center">
@@ -27,10 +27,6 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 ## 💻 Projeto
 
 Execute o projeto em seu próprio dispositivo:
-
-<p align="center"> 
-<img src="https://github.com/jneris-wd/level10/blob/main/assets/expo-thumb.jpg">
-</p>
 
 - Instale o [Expo Go](https://expo.io/client)
 - Abra o aplicativo e leia o código abaixo
