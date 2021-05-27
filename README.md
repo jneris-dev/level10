@@ -1,5 +1,5 @@
 <p align="center"> 
-<img src="https://github.com/jneris-wd/level10/blob/master/assets/logo.svg">
+<img src="https://github.com/jneris-wd/level10/blob/main/assets/logo.svg">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-<img src="https://github.com/jneris-wd/level10/blob/master/assets/thumbnail.png">
+<img src="https://github.com/jneris-wd/level10/blob/main/assets/thumbnail.png">
 </p>
 
 ---
@@ -29,13 +29,13 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 Execute o projeto em seu próprio dispositivo:
 
 <p align="center"> 
-<img src="https://github.com/jneris-wd/level10/blob/master/assets/expo-thumb.jpg">
+<img src="https://github.com/jneris-wd/level10/blob/main/assets/expo-thumb.jpg">
 </p>
 
 - Instale o [Expo Go](https://expo.io/client)
 - Abra o aplicativo e leia o código abaixo
 
-[<img src="https://github.com/jneris-wd/level10/blob/master/assets/expo.png">](https://expo.io/client)
+[<img src="https://github.com/jneris-wd/level10/blob/main/assets/expo.png">](https://expo.io/client)
 
 > Abra [este link](exp://exp.host/@jneris/level10) em seu dispositivo para visualizar o canal (Opcional)
 
