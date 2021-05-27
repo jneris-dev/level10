@@ -116,10 +116,6 @@ export const ResultScreen = () => {
 
     const navigateToHome = () => navigation.replace('HomeScreen')
 
-    const navigateToFeedback = () => {
-        navigation.replace('FeedbackScreen')
-    }
-
     if (error) {
         return (
             <View style={styles.loaderContainer}>
@@ -195,9 +191,6 @@ export const ResultScreen = () => {
                             <TouchableOpacity style={styles.exitButton} onPress={navigateToHome}>
                                 <Text style={styles.exitButtonLabel}>back to start</Text>
                             </TouchableOpacity>
-                            <Text style={styles.feedbackLabel} onPress={navigateToFeedback}>
-                                See Feedback
-                            </Text>
                         </View>
                     </View>
                 </View>
@@ -329,12 +322,4 @@ const styles = StyleSheet.create({
         color: colors.white,
         textTransform: 'uppercase',
     },
-    feedbackLabel: {
-        fontFamily: fonts.text,
-        fontSize: 15,
-        textAlign: 'center',
-        marginTop: 15,
-        color: colors.heading,
-        textDecorationLine: 'underline',
-    }
 })

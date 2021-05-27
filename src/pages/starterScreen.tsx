@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useNavigation } from '@react-navigation/core'
 import {
     SafeAreaView,
     Text,
@@ -10,6 +8,8 @@ import {
     TouchableOpacity,
     StatusBar,
 } from 'react-native'
+import { useNavigation } from '@react-navigation/core'
+import { getData } from '../services/storageService'
 
 import Logo from '../assets/logo.svg'
 import colors from '../styles/colors'
@@ -21,7 +21,7 @@ export const StarterScreen = () => {
 
     useEffect(() => {
         async function loadStorageUserName() {
-            const user = await AsyncStorage.getItem('@level10:user');
+            const user = await getData('@level10:user');
             setUserName(user || '');
         }
 
@@ -35,11 +35,6 @@ export const StarterScreen = () => {
             navigation.navigate('WelcomeScreen')
         }
     }
-
-    // const clearAsyncStorage = async () => {
-    //     AsyncStorage.clear();
-    //     console.log('Async Storage Limpo')
-    // }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -79,6 +74,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         position: 'relative',
     },
+    overlay: {
+        flex: 1,
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        opacity: 0.7,
+        backgroundColor: colors.dark,
+        height: '100%',
+        width: '100%',
+    },
     logoWrap: {
         flex: 1,
         alignItems: 'center',
@@ -98,16 +103,6 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         paddingBottom: 30,
-    },
-    overlay: {
-        flex: 1,
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        opacity: 0.7,
-        backgroundColor: colors.dark,
-        height: '100%',
-        width: '100%',
     },
     buttonStart: {
         width: 200,

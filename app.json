@@ -22,7 +22,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#1F2C34"
       }
     },
     "web": {
@@ -43,6 +43,7 @@
         "wasm",
         "svg"
       ]
-    }
+    },
+    "description": "Test your level of knowledge by answering questions on different topics and find out how much you really know about the world around you."
   }
 }
