@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-<img src="https://github.com/jneris-wd/plantmanager/blob/master/assets/thumbnail.png">
+<img src="https://github.com/jneris-wd/level10/blob/master/assets/thumbnail.png">
 </p>
 
 ---
