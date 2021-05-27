@@ -33,7 +33,7 @@ Execute o projeto em seu próprio dispositivo:
 
 [<img src="https://github.com/jneris-wd/level10/blob/main/assets/expo.png">](https://expo.io/client)
 
-> Abra [este link](exp://exp.host/@jneris/level10) em seu dispositivo para visualizar o canal (Opcional)
+- [Clique aqui se você está visualisando esse repositório no dispositivo após instalar o Expo Go](exp://exp.host/@jneris/level10)
 
 Veja mais instruções em [expo.io/@jneris/level10](https://expo.io/@jneris/level10)
 
