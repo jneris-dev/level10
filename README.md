@@ -1,5 +1,5 @@
 <p align="center"> 
-<img src="https://github.com/jneris-wd/level10/blob/main/assets/logo.svg" width="130">
+<img src="https://github.com/jneris-dev/level10/blob/main/assets/logo.svg" width="130">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-<img src="https://github.com/jneris-wd/level10/blob/main/assets/thumbnail.png">
+<img src="https://github.com/jneris-dev/level10/blob/main/assets/thumbnail.png">
 </p>
 
 ---
@@ -31,7 +31,7 @@ Execute o projeto em seu próprio dispositivo:
 - Instale o [Expo Go](https://expo.io/client)
 - Abra o aplicativo e leia o código abaixo
 
-[<img src="https://github.com/jneris-wd/level10/blob/main/assets/expo.png">](exp://exp.host/@jneris/level10)
+[<img src="https://github.com/jneris-dev/level10/blob/main/assets/expo.png">](exp://exp.host/@jneris/level10)
 
 Veja mais instruções em [expo.io/@jneris/level10](https://expo.io/@jneris/level10)
 
@@ -41,7 +41,7 @@ Veja mais instruções em [expo.io/@jneris/level10](https://expo.io/@jneris/leve
 Clone o projeto e acesse a pasta
 
 ```bash
-$ git clone https://github.com/jneris-wd/level10.git && cd level10
+$ git clone https://github.com/jneris-dev/level10.git && cd level10
 ```
 
 Siga os passos abaixo
